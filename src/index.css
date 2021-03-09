@@ -44,6 +44,12 @@ a {
   width: 85%;
   margin: 0 auto 3rem auto;
 }
+
+/* 防止元件和header重疊 */
+main {
+  padding-top: 92px;
+}
+
 /* 共用按鈕樣式 */
 .action {
   color: white;
@@ -160,10 +166,6 @@ header {
 }
 
 /* Carousel */
-.banner {
-  padding-top: 92px;
-}
-
 .banner .carousel .slide {
   background: #fff;
 }
@@ -381,9 +383,4 @@ footer {
   padding: 1rem;
   color: white;
   letter-spacing: 2px;
-}
-
-/* Message */
-.message {
-  padding-top: 92px;
 }

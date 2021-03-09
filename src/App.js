@@ -1,6 +1,7 @@
 import { Link, BrowserRouter, Route } from 'react-router-dom'
 
 import HomeScreen from './screens/HomeScreen'
+import ProductDetailsScreen from './screens/ProductDetailsScreen'
 
 export default function App() {
   return (
@@ -23,8 +24,10 @@ export default function App() {
             <span className="hamburger"></span>
           </label>
         </header>
-
-        <Route path="/" component={HomeScreen}></Route>
+        <main>
+          <Route path="/products/:id" exact component={ProductDetailsScreen}></Route>
+          <Route path="/" exact component={HomeScreen}></Route>
+        </main>
       </BrowserRouter>
 
       <footer>
