@@ -4,9 +4,15 @@ import {
   productDetailsReducer
 } from './productReducers'
 
+import {
+  cartItemsReducer
+} from './cartReducers'
+
+
 const reducers = combineReducers({
   products: productsReducer,
-  productDetails: productDetailsReducer
+  productDetails: productDetailsReducer,
+  cartItems: cartItemsReducer
 })
 
 export default reducers

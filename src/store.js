@@ -3,7 +3,11 @@ import thunk from 'redux-thunk'
 
 import reducers from './reducers/index'
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-const store = createStore(reducers, composeEnhancers(applyMiddleware(thunk)))
+const initialState = {
+  cartItems: localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : [],
+}
 
-export default store 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+const store = createStore(reducers, initialState, composeEnhancers(applyMiddleware(thunk)))
+
+export default store
