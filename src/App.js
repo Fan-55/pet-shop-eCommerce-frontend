@@ -4,6 +4,7 @@ import HomeScreen from './screens/HomeScreen'
 import ProductDetailsScreen from './screens/ProductDetailsScreen'
 import CartScreen from './screens/CartScreen'
 import Header from './components/Header'
+import LoginScreen from './screens/LoginScreen'
 
 export default function App() {
   console.log('App render')
@@ -14,6 +15,7 @@ export default function App() {
         <main>
           <Route path="/products/:id" exact component={ProductDetailsScreen}></Route>
           <Route path="/cart" exact component={CartScreen}></Route>
+          <Route path="/login" exact component={LoginScreen}></Route>
           <Route path="/" exact component={HomeScreen}></Route>
         </main>
       </BrowserRouter>
