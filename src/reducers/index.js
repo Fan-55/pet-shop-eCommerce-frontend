@@ -12,6 +12,7 @@ import {
 
 import {
   userLoginReducer,
+  userRegisterReducer
 } from './userReducers'
 
 const reducers = combineReducers({
@@ -19,6 +20,7 @@ const reducers = combineReducers({
   productDetails: productDetailsReducer,
   cartItems: cartItemsReducer,
   userLogin: userLoginReducer,
+  userRegister: userRegisterReducer,
   form: formReducer,
 })
 
