@@ -8,6 +8,7 @@ import Header from './components/Header'
 import RegisterScreen from './screens/RegisterScreen'
 import LoginScreen from './screens/LoginScreen'
 import CheckoutScreen from './screens/CheckoutScreen'
+import OrderDetailsScreen from './screens/OrderDetailsScreen'
 
 export default function App() {
   console.log('App render')
@@ -22,6 +23,7 @@ export default function App() {
           <Route path="/login" exact component={LoginScreen} />
           <Route path="/cart" exact component={CartScreen} />
           <PrivateRoute path="/checkout" exact component={CheckoutScreen} />
+          <PrivateRoute path="/orders/:id" exact component={OrderDetailsScreen} />
         </main>
       </BrowserRouter>
 
