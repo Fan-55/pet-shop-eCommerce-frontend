@@ -52,8 +52,6 @@ const validate = ({ name, email, password, confirmPassword }) => {
 }
 
 const RegisterScreen = (props) => {
-  const redirect = props.location.search ? props.location.search.split('=')[1] : '/'
-
   const dispatch = useDispatch()
   const onSubmit = ({ name, email, phone, password, confirmPassword }) => {
     dispatch(register({ name, email, phone, password, confirmPassword }))
@@ -62,10 +60,14 @@ const RegisterScreen = (props) => {
   const { loading, success, error } = useSelector(state => state.userRegister)
   useEffect(() => {
     if (success) {
-      props.history.push(redirect)
+      if (props.location.state && props.location.state.from) {
+        props.history.replace(props.location.state.from)
+      } else {
+        props.history.replace('/')
+      }
       dispatch({ type: USER_REGISTER_RESET })
     }
-  }, [success, dispatch, props.history, redirect])
+  }, [success, dispatch, props.history, props.location.state])
 
   const renderApiError = (err) => {
     if (typeof err !== 'string') {
@@ -88,7 +90,15 @@ const RegisterScreen = (props) => {
           <Field name="password" component={renderInput} labelContent="*密碼" id="password" type="password" placeholder="請輸入密碼" />
           <Field name="confirmPassword" component={renderInput} labelContent="*請再輸入一次密碼" id="confirmPassword" type="password" placeholder="請輸入請再輸入一次密碼" />
           <button type="submit" className="btn btn-primary">註冊</button>
-          <span>已經有帳號?</span><Link to={`/login?redirect=${redirect}`} className="btn btn-link">登入</Link>
+          <span>已經有帳號?</span>
+          <Link
+            to={{
+              pathname: '/login',
+              state: props.location.state ? props.location.state : null
+            }}
+            className="btn btn-link"
+          >登入
+          </Link>
         </form>
       </div>
     </section >
