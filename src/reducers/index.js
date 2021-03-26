@@ -15,13 +15,18 @@ import {
   userRegisterReducer
 } from './userReducers'
 
+import {
+  createOrderReducer,
+} from './orderReducers'
+
 const reducers = combineReducers({
+  form: formReducer,
   products: productsReducer,
   productDetails: productDetailsReducer,
   cartItems: cartItemsReducer,
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
-  form: formReducer,
+  createOrder: createOrderReducer,
 })
 
 export default reducers
