@@ -6,7 +6,8 @@ import Toast from '../utils/toast'
 import Counter from '../components/Counter'
 import { removeFromCart } from '../actions/cartActions'
 
-export default function CartScreen(props) {
+const CartScreen = (props) => {
+  console.log('CartScreen props', props)
   console.log('CartScreen render')
   const cartItems = useSelector(state => state.cartItems)
   const dispatch = useDispatch()
@@ -28,8 +29,8 @@ export default function CartScreen(props) {
   }
 
   const subtotal = cartItems.reduce((a, c) => a + c.price * c.quantity, 0)
-  const shippingPrice = 80
-  const total = subtotal + shippingPrice
+  const deliveryPrice = 80
+  const total = subtotal + deliveryPrice
 
   return (
     <div>
@@ -42,6 +43,7 @@ export default function CartScreen(props) {
             <Link to={`/products/${item.id}`} className="card-list-title">{item.name}</Link>
             <div className="card-list-price">$ {item.price}</div>
             <Counter qty={item.quantity} item={item} />
+            <div className="card-list-subtotal">$ {item.quantity * item.price}</div>
             <div className="cart-item-delete">
               <i
                 className="far fa-trash-alt"
@@ -54,12 +56,20 @@ export default function CartScreen(props) {
 
       <div className="cart-checkout">
         <div className="price-subtotal">小記: {subtotal}</div>
-        <div className="price-shipping">運費: {shippingPrice}</div>
+        <div className="price-delivery">運費: {deliveryPrice}</div>
         <div className="price-total">總計: {total}</div>
-        <Link to="/login?redirect=shipping">
-          <button type="button">買單</button>
-        </Link>
+        {cartItems.length ? (
+          <Link to="/checkout">
+            <button type="button">買單</button>
+          </Link>
+        ) : (
+          <Link to="/">
+            <button type="button">去選購</button>
+          </Link>
+        )}
       </div>
     </div>
   )
 }
+
+export default CartScreen
