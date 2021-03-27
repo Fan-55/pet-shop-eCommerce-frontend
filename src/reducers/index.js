@@ -19,6 +19,7 @@ import {
   createOrderReducer,
   orderDetailsReducer,
   ordersReducer,
+  deleteOrderReducer,
 } from './orderReducers'
 
 const reducers = combineReducers({
@@ -31,6 +32,7 @@ const reducers = combineReducers({
   createOrder: createOrderReducer,
   orderDetails: orderDetailsReducer,
   orders: ordersReducer,
+  deleteOrder: deleteOrderReducer,
 })
 
 export default reducers

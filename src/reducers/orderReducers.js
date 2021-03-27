@@ -9,6 +9,10 @@ import {
   ORDER_FETCH_REQUEST,
   ORDER_FETCH_SUCCESS,
   ORDER_FETCH_FAIL,
+  ORDER_DELETE_REQUEST,
+  ORDER_DELETE_SUCCESS,
+  ORDER_DELETE_FAIL,
+  ORDER_DELETE_RESET,
 } from '../constants/orderConstants'
 
 export const createOrderReducer = (state = {}, action) => {
@@ -52,3 +56,17 @@ export const ordersReducer = (state = {}, action) => {
   }
 }
 
+export const deleteOrderReducer = (state = {}, action) => {
+  switch (action.type) {
+    case ORDER_DELETE_REQUEST:
+      return { loading: true }
+    case ORDER_DELETE_SUCCESS:
+      return { loading: false, success: true }
+    case ORDER_DELETE_FAIL:
+      return { loading: false, error: action.payload }
+    case ORDER_DELETE_RESET:
+      return {}
+    default:
+      return state
+  }
+}
