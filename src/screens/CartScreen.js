@@ -7,7 +7,6 @@ import Counter from '../components/Counter'
 import { removeFromCart } from '../actions/cartActions'
 
 const CartScreen = (props) => {
-  console.log('CartScreen props', props)
   console.log('CartScreen render')
   const cartItems = useSelector(state => state.cartItems)
   const dispatch = useDispatch()
@@ -33,7 +32,10 @@ const CartScreen = (props) => {
   const total = subtotal + deliveryPrice
 
   return (
-    <div>
+    <div className="container">
+      <Link to={{
+        pathname: props.location.state ? props.location.state.from.pathname : '/'
+      }}>回到上一頁</Link>
       <ul>
         {cartItems.map(item => (
           <li key={item.id} className="cart-item-list">

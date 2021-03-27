@@ -35,11 +35,27 @@ export default function Header(props) {
       <nav className="nav">
         <ul className="nav-list">
           <li className="nav-item">
-            <Link className="nav-link" to="/cart">購物車 <strong>({itemsCount})</strong></Link>
+            <Link
+              className="nav-link"
+              to={{
+                pathname: '/cart',
+                state: {
+                  from: props.location
+                }
+              }}>
+              購物車 <strong>({itemsCount})</strong>
+            </Link>
           </li>
           <li className="nav-item">
             {currentUser ?
               <Dropdown /> :
+              <Link
+                className="nav-link"
+                to={{
+                  pathname: '/login',
+                  state: { from: props.location }
+                }}
+              >會員登入</Link>
             }
           </li>
 
