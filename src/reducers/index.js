@@ -18,6 +18,7 @@ import {
 import {
   createOrderReducer,
   orderDetailsReducer,
+  ordersReducer,
 } from './orderReducers'
 
 const reducers = combineReducers({
@@ -29,6 +30,7 @@ const reducers = combineReducers({
   userRegister: userRegisterReducer,
   createOrder: createOrderReducer,
   orderDetails: orderDetailsReducer,
+  orders: ordersReducer,
 })
 
 export default reducers

@@ -14,6 +14,20 @@ export default function Header(props) {
     dispatch(logout())
   }
 
+  const Dropdown = () => {
+    return (
+      <div className="dropdown">
+        <button className="btn btn-link dropdown-toggle nav-link" type="button" id="user-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+          Hi, {currentUser.name}
+        </button>
+        <ul className="dropdown-menu" aria-labelledby="user-dropdown">
+          <li><Link className="nav-link" to="/orders">訂單</Link></li>
+          <li><Link className="nav-link" to="#logout" onClick={logoutHandler}>登出</Link></li>
+        </ul>
+      </div>
+    )
+  }
+
   return (
     <header>
       <Link to="/" className="navbar-brand">毛小孩星球</Link>
@@ -25,15 +39,9 @@ export default function Header(props) {
           </li>
           <li className="nav-item">
             {currentUser ?
-              <Link className="nav-link" to="/user/dashboard">Hi, {currentUser.name}</Link> :
-              <Link className="nav-link" to="/login">會員登入</Link>
+              <Dropdown /> :
             }
           </li>
-          {currentUser &&
-            <li className="nav-item">
-              <Link className="nav-link" to="#logout" onClick={logoutHandler}>登出</Link>
-            </li>
-          }
 
         </ul>
       </nav>
