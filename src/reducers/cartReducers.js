@@ -1,16 +1,26 @@
-import { CART_ADD_ITEM, CART_REMOVE_ITEM } from '../constants/cartConstants'
+import {
+  CART_ADD_ITEM,
+  CART_REMOVE_ITEM,
+  CART_ADD_ITEM_RESET
+} from '../constants/cartConstants'
 
-export const cartItemsReducer = (state = [], action) => {
+export const cartReducer = (state = {}, action) => {
   switch (action.type) {
     case CART_ADD_ITEM:
-      const existedItem = state.find(item => item.id === action.payload.id)
-      if (existedItem) {
-        return state.map(item => item.id === action.payload.id ? action.payload : item)
+      let cartItems = state.cartItems
+      const addedItem = action.payload
+      const isExistInCart = state.cartItems.find(i => i.id === addedItem.id)
+      if (isExistInCart) {
+        cartItems = cartItems.map(i => i.id === addedItem.id ? addedItem : i)
+        return { ...state, cartItems, addedItem }
       } else {
-        return [...state, action.payload]
+        cartItems = [...cartItems, addedItem]
+        return { ...state, cartItems, addedItem }
       }
     case CART_REMOVE_ITEM:
       return state.filter(item => item.id !== action.payload)
+    case CART_ADD_ITEM_RESET:
+      return { ...state, addedItem: null }
     default:
       return state
   }

@@ -4,7 +4,9 @@ import thunk from 'redux-thunk'
 import reducers from './reducers/index'
 
 const initialState = {
-  cartItems: localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : [],
+  cart: {
+    cartItems: localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : [],
+  },
   userLogin: {
     currentUser: localStorage.getItem('currentUser') ? JSON.parse(localStorage.getItem('currentUser')) : null,
   }
