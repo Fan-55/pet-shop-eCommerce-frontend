@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom'
 
 import { logout } from '../actions/userActions'
 
-export default function Header(props) {
+const Header = (props) => {
   console.log('Header render')
-  const cartItems = useSelector(state => state.cartItems)
+  const cartItems = useSelector(state => state.cart.cartItems)
   const itemsCount = cartItems.reduce((a, c) => a + c.quantity, 0)
   const currentUser = useSelector(state => state.userLogin.currentUser)
 
@@ -30,7 +30,7 @@ export default function Header(props) {
 
   return (
     <header>
-      <Link to="/" className="navbar-brand">毛小孩星球</Link>
+      <Link to="/" className="navbar-brand">毛小孩商城</Link>
       <input type="checkbox" className="navbar-toggle" id="navbar-toggle" />
       <nav className="nav">
         <ul className="nav-list">
@@ -58,7 +58,6 @@ export default function Header(props) {
               >會員登入</Link>
             }
           </li>
-
         </ul>
       </nav>
       <label htmlFor="navbar-toggle" className="navbar-toggle-label">
@@ -67,3 +66,5 @@ export default function Header(props) {
     </header>
   )
 }
+
+export default Header

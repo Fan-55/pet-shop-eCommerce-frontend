@@ -30,7 +30,7 @@ export default function App() {
       </BrowserRouter>
 
       <footer>
-        <p>毛小孩星球 &copy; 2020 </p>
+        <p>毛小孩商城 &copy; 2021 </p>
       </footer>
 
     </>
