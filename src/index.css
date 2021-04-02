@@ -1,6 +1,6 @@
 /****** Reset CSS Start ******/
 /* 載入字型 */
-@import url("https://fonts.googleapis.com/css?family=Noto+Sans+TC:400,700&display=swap&subset=chinese-traditional");
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
 *,
 *::before,
 *::after {
@@ -23,7 +23,8 @@ h1,
 h2,
 h3,
 h4,
-h5 {
+h5,
+h6 {
   margin: 0;
   line-height: 0.9;
 }
@@ -57,7 +58,11 @@ main {
 
 .container {
   margin-bottom: 3rem;
-  /* border: 1px solid; */
+  padding: 0;
+}
+
+.container-lg {
+  padding: 0;
 }
 
 .alert-info {
@@ -65,6 +70,27 @@ main {
   color: #121212;
   border: none;
   text-align: center;
+}
+
+.default-btn {
+  background-color: #267b98;
+  color: rgb(255, 250, 250);
+  transition: background-color .2s ease-out;
+  transition: color .2s ease-out;
+}
+
+.default-btn:hover {
+  color:#121212;
+  background-color: #29809d;
+}
+
+form input {
+  transition: border-color .2s ease-out;
+}
+
+form input:hover {
+  border-color: #838383;
+  cursor: pointer;
 }
 
 /****** Basic Setting End ******/
@@ -175,7 +201,7 @@ header {
 }
 /****** Carousel End ******/
 
-/* HomeScreen Start */
+/****** HomeScreen Start ******/
 .product-list-wrapper {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -298,7 +324,7 @@ header {
   font-size: 1.5rem;
   cursor: pointer;
 }
-/* HomeScreen End */
+/****** HomeScreen End ******/
 
 /****** Spinner Start ******/
 .spinner {
@@ -351,11 +377,6 @@ footer {
 /****** Footer End ******/
 
 /****** CartScreen Start ******/
-.container {
-  max-width: 100%;
-  padding: 0;
-}
-
 .nav-back-link {
   display: inline-block;
   margin-bottom: 10px;
@@ -514,6 +535,80 @@ footer {
 }
 /****** Counter End ******/
 
+
+/****** RegisterScreen Start ******/
+.register-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 2px 12px #d5d5d5;
+  -moz-box-shadow: 0 2px 12px #d5d5d5;
+  box-shadow: 0 2px 12px #d5d5d5;
+}
+
+.register-title {
+  text-align: center;
+  color: #267b98;
+  margin-bottom: 1rem;
+}
+
+.register-form-hint {
+  color: #da1428;
+}
+
+.register-form .form-label {
+  display: block;
+  padding-left: 0.55rem;
+}
+
+.register-reminder {
+  margin-top: 5px;
+  text-align: center;
+}
+
+/****** RegisterScreen End ******/
+
+
+/****** LoginScreen Start ******/
+.login-img {
+  display: none;
+}
+
+.login-title {
+  text-align: center;
+  color: #267b98;
+  margin-bottom: 1rem;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 2px 12px #d5d5d5;
+  -moz-box-shadow: 0 2px 12px #d5d5d5;
+  box-shadow: 0 2px 12px #d5d5d5;
+}
+
+.login-form .form-label {
+  display: block;
+  padding-left: 0.55rem;
+}
+
+.login-reminder {
+  margin-top: 5px;
+  text-align: center;
+}
+
+/****** LoginScreen End ******/
+
 /* ProductDetailsScreen */
 .product-img-wrapper {
   max-width: 300px;
@@ -560,13 +655,9 @@ footer {
   /****** Header End ******/
 
   /****** CartScreen Start  ******/
-  .container{
-    max-width: 1240px;
-  }
-
   .cart-header {
     display: grid;
-    grid-template-columns: minmax(100px, 1fr) minmax(250px, 2fr) minmax(100px, 1fr) minmax(120px, 1fr) repeat(2, minmax(100px, 1fr));
+    grid-template-columns: minmax(100px, 1fr) minmax(200px, 2fr) minmax(100px, 1fr) minmax(120px, 1fr) repeat(2, minmax(100px, 1fr));
     grid-template-rows: 50px;
     grid-gap: 1rem;
     align-items: center;
@@ -579,7 +670,7 @@ footer {
 
   .cart-item {
     display: grid;
-    grid-template-columns: minmax(100px, 1fr) minmax(250px, 2fr) minmax(100px, 1fr) minmax(120px, 1fr) repeat(2, minmax(100px, 1fr));
+    grid-template-columns: minmax(100px, 1fr) minmax(200px, 2fr) minmax(100px, 1fr) minmax(120px, 1fr) repeat(2, minmax(100px, 1fr));
     align-items: center;
     padding: 10px;
     border-bottom: 1px solid #d5d5d5;
@@ -591,4 +682,30 @@ footer {
   }
 
   /****** CartScreen End  ******/
+
+  /****** LoginScreen Start  ******/
+  .login-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  .login-img {
+    display: block;
+    height: 500px;
+    max-width: 400px;
+    object-fit: cover;
+    border-radius: 10px 0 0 10px;
+    -webkit-box-shadow: 0 2px 12px #d5d5d5;
+    -moz-box-shadow: 0 2px 12px #d5d5d5;
+    box-shadow: 0 2px 12px #d5d5d5;
+  }
+
+  .login-form {
+    max-width: 400px;
+    justify-content: center;
+    margin: 0;
+    border-radius: 0 10px 10px 0;
+    flex: 1;
+  }
+  /****** LoginScreen End  ******/
 }

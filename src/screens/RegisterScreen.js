@@ -8,7 +8,7 @@ import { USER_REGISTER_RESET } from '../constants/userConstants'
 import Spinner from '../components/Spinner'
 import Message from '../components/Message'
 
-const renderInput = ({ input, meta, labelContent, id, type, placeholder }) => {
+const renderInput = ({ input, meta, labelContent, id, type, placeholder, selector }) => {
   const renderError = ({ touched, error }) => {
     if (touched && error) {
       return (
@@ -25,7 +25,7 @@ const renderInput = ({ input, meta, labelContent, id, type, placeholder }) => {
       <input
         autoComplete="off"
         type={type}
-        className={`form-control${meta.error && meta.touched ? ' is-invalid' : ''}`}
+        className={`register-${selector} form-control${meta.error && meta.touched ? ' is-invalid' : ''}`}
         id={id}
         placeholder={placeholder}
         {...input}
@@ -80,26 +80,28 @@ const RegisterScreen = (props) => {
     <section id="register">
       {error && renderApiError(error)}
       <div className="container">
-        <h1>註冊</h1>
-        {loading && <Spinner />}
-        <form onSubmit={props.handleSubmit(onSubmit)}>
-          <span>*必填欄位</span>
-          <Field name="name" component={renderInput} labelContent="*姓名" id="name" type="text" placeholder="請輸入姓名" />
-          <Field name="email" component={renderInput} labelContent="*Email" id="email" type="email" placeholder="請輸入Email" />
-          <Field name="phone" component={renderInput} labelContent="聯絡電話" id="phone" type="text" placeholder="請輸入聯絡電話" />
-          <Field name="password" component={renderInput} labelContent="*密碼" id="password" type="password" placeholder="請輸入密碼" />
-          <Field name="confirmPassword" component={renderInput} labelContent="*請再輸入一次密碼" id="confirmPassword" type="password" placeholder="請輸入請再輸入一次密碼" />
-          <button type="submit" className="btn btn-primary">註冊</button>
-          <span>已經有帳號?</span>
-          <Link
-            to={{
-              pathname: '/login',
-              state: props.location.state ? props.location.state : null
-            }}
-            className="btn btn-link"
-          >登入
-          </Link>
-        </form>
+        <div className="register-wrapper">
+          {loading && <Spinner />}
+          <form onSubmit={props.handleSubmit(onSubmit)} className="register-form">
+            <h3 className="register-title">註冊</h3>
+            <span className="register-form-hint">*必填欄位</span>
+            <Field name="name" component={renderInput} labelContent="*姓名" id="name" type="text" placeholder="請輸入姓名" selector="name" />
+            <Field name="email" component={renderInput} labelContent="*Email" id="email" type="email" placeholder="請輸入Email" selector="email" />
+            <Field name="phone" component={renderInput} labelContent="聯絡電話" id="phone" type="text" placeholder="請輸入聯絡電話" selector="phone" />
+            <Field name="password" component={renderInput} labelContent="*密碼" id="password" type="password" placeholder="請輸入密碼" selector="password" />
+            <Field name="confirmPassword" component={renderInput} labelContent="*請再輸入一次密碼" id="confirmPassword" type="password" placeholder="請輸入請再輸入一次密碼" selector="confirmPassword" />
+            <button type="submit" className="login-btn default-btn btn">註冊</button>
+            <div className="register-reminder">
+              <span>已經有帳號?</span>
+              <Link
+                to={{
+                  pathname: '/login',
+                  state: props.location.state ? props.location.state : null
+                }}
+              >登入</Link>
+            </div>
+          </form>
+        </div>
       </div>
     </section >
   )

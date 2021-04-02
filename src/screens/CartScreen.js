@@ -48,7 +48,7 @@ const CartScreen = (props) => {
     const itemCount = cartItems.reduce((a, c) => a + c.quantity, 0)
     return (
       <section id="cart">
-        <div className="container">
+        <div className="container-lg">
           <Link
             to={{
               pathname: props.location.state ? props.location.state.from.pathname : '/'
