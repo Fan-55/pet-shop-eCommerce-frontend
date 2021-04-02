@@ -10,6 +10,6 @@ export const addToCart = (item) => {
 export const removeFromCart = (itemId) => {
   return (dispatch, getState) => {
     dispatch({ type: CART_REMOVE_ITEM, payload: itemId })
-    localStorage.setItem('cartItems', JSON.stringify(getState().cartItems))
+    localStorage.setItem('cartItems', JSON.stringify(getState().cart.cartItems))
   }
 }

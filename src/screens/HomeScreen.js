@@ -6,7 +6,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css'
 
 import { fetchProducts } from '../actions/productActions'
 import { addToCart } from '../actions/cartActions'
-import { CART_ADD_ITEM_RESET } from '../constants/cartConstants'
+import { CART_ACTION_RESET } from '../constants/cartConstants'
 import Spinner from '../components/Spinner'
 import Message from '../components/Message'
 import Toast from '../utils/toast'
@@ -16,21 +16,21 @@ const HomeScreen = (props) => {
   const dispatch = useDispatch()
 
   const { loading, error, products } = useSelector(state => state.products)
-  const { cartItems, addedItem } = useSelector(state => state.cart)
+  const { cartItems, actionSuccess } = useSelector(state => state.cart)
 
   useEffect(() => {
     dispatch(fetchProducts())
   }, [dispatch])
 
   useEffect(() => {
-    if (addedItem) {
-      dispatch({ type: CART_ADD_ITEM_RESET })
+    if (actionSuccess) {
+      dispatch({ type: CART_ACTION_RESET })
       Toast.fire({
         icon: 'success',
         title: '成功加入購物車中'
       })
     }
-  }, [dispatch, addedItem])
+  }, [dispatch, actionSuccess])
 
   const onCartClickHandler = (product) => {
     const isExistInCart = cartItems.find(i => i.id === product.id)
