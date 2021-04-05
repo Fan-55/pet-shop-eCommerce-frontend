@@ -711,9 +711,9 @@ footer {
   max-width: 960px;
 }
 
-#cart-items,
-#delivery-details,
-#payment-details {
+.cart-items,
+.delivery-details,
+.payment-details {
   background-color: #fff;
   border-radius: 5px;
   -webkit-box-shadow: 0 2px 12px #d5d5d5;
@@ -727,7 +727,7 @@ footer {
 .payment-section-title {
   color: #267b98;
   border-bottom: 1px solid #d5d5d5;
-  padding: 20px 30px;
+  padding: 1rem 2rem;
 }
 
 .cart-summary-subtotal.checkout {
@@ -744,12 +744,6 @@ footer {
   margin: .5rem 0;
 }
 
-  /* .delivery-details-wrapper .name,
-  .delivery-details-wrapper .phone,
-  .delivery-details-wrapper .address {
-    width: 100%;
-  } */
-
 .delivery-method-title {
   display: inline-block;
   margin: .8rem 0;
@@ -761,6 +755,54 @@ footer {
 }
 
 /****** CheckoutScreen End ******/
+
+/***** OrderDetailsScreen Start ******/
+.payment-details.order-checkout {
+  background-color:#e7f7fc;
+  border: 1px solid #267b98;
+}
+
+.payment-details.order-checkout .order-total {
+  color: #da1428;
+  font-weight: 510;
+}
+
+.payment-details.order-checkout .payment-status.true {
+  font-weight: 510;
+}
+
+.checkout-pay-form {
+  padding: .5rem .5rem;
+}
+
+.payment-btn {
+  width: 100%;
+}
+
+.order-delivery-details-wrapper,
+.order-checkout-details-wrapper  {
+  padding: .5rem .5rem;
+}
+
+.order-delivery-details-wrapper .row,
+.order-checkout-details-wrapper .row {
+  padding: .2rem 0;
+  border-bottom: 1px solid #d5d5d5;
+  margin: 0.5rem 0.5rem;
+}
+
+.order-delivery-details-wrapper .row:nth-child(6),
+.order-checkout-details-wrapper .row:nth-child(6) {
+  border-bottom: none;
+}
+
+.order-delivery-details-wrapper span:first-child,
+.order-checkout-details-wrapper span:first-child {
+  font-weight: 510;
+  color: #1d6076;
+  border-right: 1px solid #d5d5d5;
+}
+/***** OrderDetailsScreen End ******/
 
 /********* 電腦版樣式 *********/
 @media screen and (min-width: 768px) {
@@ -909,4 +951,10 @@ footer {
   }
 
 /****** CheckoutScreen End ******/
+
+/***** OrderDetailsScreen Start ******/
+  .container.order {
+    max-width: 960px;
+  }
+/***** OrderDetailsScreen End ******/
 }

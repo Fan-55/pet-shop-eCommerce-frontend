@@ -102,7 +102,7 @@ const CheckoutScreen = (props) => {
       {!cartItems.length ? (<Message type="danger"><Link to="/">請加入商品至購物車</Link></Message>) : (
         <div className="container checkout">
           {renderApiError()}
-          <section id="cart-items">
+          <section id="cart-items" className="cart-items">
             <h4 className="cart-section-title">訂單商品</h4>
             <div className="cart-header checkout">
               <span className="cart-img"></span>
@@ -139,7 +139,7 @@ const CheckoutScreen = (props) => {
           </section>
 
           <form onSubmit={onSubmit} className="checkout-details-form">
-            <div id="delivery-details">
+            <div id="delivery-details" className="delivery-details">
               <h4 className="delivery-section-title">運送資訊</h4>
               <div className="delivery-details-wrapper">
                 <span className="form-hint">*必填欄位</span>
@@ -228,7 +228,7 @@ const CheckoutScreen = (props) => {
                 </div>
               </div>
             </div>
-            <div id="payment-details">
+            <div id="payment-details" className="payment-details">
               <h4 className="payment-section-title">付款方式</h4>
               <div className="payment-details-wrapper">
                 <div className="payment-method">
