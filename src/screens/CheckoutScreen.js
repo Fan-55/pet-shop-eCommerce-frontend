@@ -74,7 +74,7 @@ const CheckoutScreen = (props) => {
     }
   }
 
-  const cartItems = useSelector(state => state.cartItems)
+  const cartItems = useSelector(state => state.cart.cartItems)
   const { loading, order, error: apiError } = useSelector(state => state.createOrder)
 
   useEffect(() => {
@@ -93,39 +93,60 @@ const CheckoutScreen = (props) => {
       return <Message type="danger">{apiError}</Message>
     }
   }
+  const itemCount = cartItems.reduce((a, c) => a + c.quantity, 0)
+  const subtotal = cartItems.reduce((a, c) => a + c.price * c.quantity, 0)
 
   return (
     <div>
       {loading && <Spinner />}
       {!cartItems.length ? (<Message type="danger"><Link to="/">請加入商品至購物車</Link></Message>) : (
-        <div className="container">
+        <div className="container checkout">
           {renderApiError()}
           <section id="cart-items">
-            <h1>訂單商品</h1>
-            <ul>
-              {cartItems.map(item => (
-                <li key={item.id} className="cart-item-list">
-                  <div className="cart-list-img-wrapper">
-                    <img src={item.image} alt={item.name} />
+            <h4 className="cart-section-title">訂單商品</h4>
+            <div className="cart-header checkout">
+              <span className="cart-img"></span>
+              <span className="cart-title">商品</span>
+              <span className="cart-price">單價</span>
+              <span className="cart-counter">數量</span>
+              <span className="cart-subtotal">總計</span>
+            </div>
+            {
+              cartItems.map(i => (
+                <div key={i.id} className="cart-item checkout">
+                  <img
+                    className="cart-item-img"
+                    src={i.image}
+                    alt={i.name}
+                  />
+                  <span className="cart-item-title">{i.name}</span>
+                  <span className="cart-item-price">${i.price}</span>
+                  <div className="cart-item-qty-wrapper">
+                    <span className="cart-item-qty-title">數量: </span>
+                    <span className="cart-item-quantity">{i.quantity}</span>
                   </div>
-                  <Link to={`/products/${item.id}`} className="card-list-title">{item.name}</Link>
-                  <div className="card-list-price">$ {item.price}</div>
-                  <div className="card-list-quantity">$ {item.quantity}</div>
-                  <div className="card-list-subtotal">$ {item.quantity * item.price}</div>
-                </li>
-              ))}
-            </ul>
+                  <div className="cart-item-subtotal-wrapper">
+                    <span className="cart-item-subtotal-title">總計: </span>
+                    <span className="cart-item-subtotal">${i.price * i.quantity}</span>
+                  </div>
+                </div>
+              ))
+            }
+            <div className="cart-summary-subtotal checkout">
+              <span>總金額({itemCount}項商品):</span>
+              <span className="subtotal-price">${subtotal}</span>
+            </div>
           </section>
 
-          <section id="checkout-details">
-            <form onSubmit={onSubmit}>
-              <div className="delivery-details">
-                <h1>運送資訊</h1>
-                <span>*必填欄位</span>
+          <form onSubmit={onSubmit} className="checkout-details-form">
+            <div id="delivery-details">
+              <h4 className="delivery-section-title">運送資訊</h4>
+              <div className="delivery-details-wrapper">
+                <span className="form-hint">*必填欄位</span>
                 <div className="mb-3">
                   <label className="form-label" htmlFor="recipient">*收件人姓名</label>
                   <input
-                    className={`form-control${errors.recipient ? ' is-invalid' : ''}`}
+                    className={`form-control${errors.recipient ? ' is-invalid' : ''} name`}
                     type="text"
                     id="recipient"
                     placeholder="請輸入收件人姓名"
@@ -140,7 +161,7 @@ const CheckoutScreen = (props) => {
                 <div className="mb-3">
                   <label className="form-label" htmlFor="phone">*收件人電話</label>
                   <input
-                    className={`form-control${errors.phone ? ' is-invalid' : ''}`}
+                    className={`form-control${errors.phone ? ' is-invalid' : ''} phone`}
                     type="text"
                     id="phone"
                     placeholder="請輸入收件人電話"
@@ -154,20 +175,22 @@ const CheckoutScreen = (props) => {
                 </div>
                 <div className="mb-3">
                   <label className="form-label" htmlFor="address">*收件地址</label>
-                  <input
-                    className={`form-control${errors.address ? ' is-invalid' : ''}`}
+                  <textarea
+                    className={`form-control${errors.address ? ' is-invalid' : ''} address`}
                     type="text"
                     id="address"
                     placeholder="請輸入收件地址"
                     onChange={(e) => setAddress(e.target.value)}
                     onBlur={(e) => setTouched({ ...touched, address: true })}
                     value={address}
+                    rows="3"
                   />
                   <div className="invalid-feedback">
                     {errors.address}
                   </div>
                 </div>
                 <div className="delivery-method">
+                  <span className="delivery-method-title">*運送方式:</span>
                   <div className="form-check">
                     <input
                       className={`form-check-input${errors.deliveryMethod ? ' is-invalid' : ''}`}
@@ -204,8 +227,10 @@ const CheckoutScreen = (props) => {
                   </div>
                 </div>
               </div>
-              <div className="payment-details">
-                <h1>付款方式</h1>
+            </div>
+            <div id="payment-details">
+              <h4 className="payment-section-title">付款方式</h4>
+              <div className="payment-details-wrapper">
                 <div className="payment-method">
                   <div className="form-check">
                     <input
@@ -226,12 +251,13 @@ const CheckoutScreen = (props) => {
                   </div>
                 </div>
               </div>
-              <button type="submit">下一步</button>
-            </form>
-          </section>
+            </div>
+            <button type="submit" className="btn default-btn checkout-btn">下訂單</button>
+          </form>
         </div>
-      )}
-    </div>
+      )
+      }
+    </div >
   )
 }
 

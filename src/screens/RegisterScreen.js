@@ -84,7 +84,7 @@ const RegisterScreen = (props) => {
           {loading && <Spinner />}
           <form onSubmit={props.handleSubmit(onSubmit)} className="register-form">
             <h3 className="register-title">註冊</h3>
-            <span className="register-form-hint">*必填欄位</span>
+            <span className="form-hint">*必填欄位</span>
             <Field name="name" component={renderInput} labelContent="*姓名" id="name" type="text" placeholder="請輸入姓名" selector="name" />
             <Field name="email" component={renderInput} labelContent="*Email" id="email" type="email" placeholder="請輸入Email" selector="email" />
             <Field name="phone" component={renderInput} labelContent="聯絡電話" id="phone" type="text" placeholder="請輸入聯絡電話" selector="phone" />
