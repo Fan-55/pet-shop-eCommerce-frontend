@@ -1,70 +1,69 @@
-# Getting Started with Create React App
+## 毛小孩商城
+---
+這是一個販賣寵物商品的電商網站
+![](/screenshots/v1.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#### Demo Website
+---
+👉 Heroku: https://fan5-pet-shop.herokuapp.com/
+請用下列資料測試
+會員登入:
+| 信箱 | 密碼 |
+| ------ | ------ |
+| user1@seed.com | 123|
+| user2@seed.com | 123|
 
-## Available Scripts
+信用卡號: 4000-2211-1111-1111
+有效月年和背面末三碼可任意填寫
+#### 後端Demo
+---
+👉 Github: https://github.com/Fan-55/pet-shop-eCommerce-backend
+👉 Heroku: https://pet-shop-api.herokuapp.com/api/products
+#### Features
+---
+- 前端使用React框架
+- 串接藍新金流
+- 使用localstorage實作購物車功能
+- RWD
+- jwt authentication
+- 串接後端API
+- 後端API使用Node.js + Exresss.js + MySQL實作
 
-In the project directory, you can run:
+#### Tools
+---
+ 前端: 
+- HTML
+- CSS
+- React
+- Redux
+- Bootstrap
 
-### `npm start`
+後端:
+- Node.js
+- Express.js
+- MySQL
+- Sequelize
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#### Run Locally
+---
+1. Clone frontend repository
+```
+$ git clone https://github.com/Fan-55/pet-shop-eCommerce-frontend.git
+```
+2. Go to the directory 
+```
+$ cd pet-shop-eCommerce-frontend
+```
+3. Install the required packages 
+```
+$ npm install
+```
+4. Add `.env` file to root directory and copy the following to `.env` file
+```
+REACT_APP_BASE_URL=https://pet-shop-api.herokuapp.com
+```
+5. Run the app in the development mode. 
+```
+$ npm start
+```
+6. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
