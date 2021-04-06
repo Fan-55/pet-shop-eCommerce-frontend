@@ -47,53 +47,85 @@ const OrderListScreen = (props) => {
     if (loading || deleteOrderLoading) return <Spinner />
     if (error || deleteOrderError) return <Message type="danger">{error}</Message>
     if (orders) {
+      if (!orders.length) return <Message type="info" dismiss={false}>沒有訂單 <Link to="/">去選購</Link></Message>
       return (
-        <table className="table table-striped table-bordered">
-          <thead>
-            <tr>
-              <th scope="col">訂單編號</th>
-              <th>成立時間</th>
-              <th>付款狀態</th>
-              <th>付款方式</th>
-              <th>運送狀態</th>
-              <th>運送方式</th>
-              <th>訂單金額</th>
-              <th>明細</th>
-              <th>操作</th>
-            </tr>
-          </thead>
-          <tbody>
-            {orders.map((o, i) => {
-              const offset = 8 //hrs
-              const createdAt = new Date(Date.parse(o.createdAt) + offset * 60 * 60 * 1000).toISOString().slice(0, 19).split('T').join(' ')
-              return (
-                <tr key={i}>
-                  <td>{o.sn}</td>
-                  <td>{createdAt}</td>
-                  <td>{o.payment_method}</td>
-                  <td>{o.payment_status ? '已付款' : '尚未付款'}</td>
-                  <td>{o.delivery_method}</td>
-                  <td>{o.delivery_status ? '已出貨' : '尚未出貨'}</td>
-                  <td>${o.total}</td>
-                  <td>
-                    <Link to={{
-                      pathname: `/orders/${o.id}`,
-                      state: { from: props.location }
-                    }}>
-                      查看明細
-                  </Link>
-                  </td>
-                  <td>{!o.payment_status && (
-                    <button
-                      className="btn btn-primary"
-                      onClick={() => { deleteOrderHandler(o.id) }}
-                    > 取消訂單</button>
-                  )}</td>
-                </tr>
-              )
-            })}
-          </tbody>
-        </table >
+        <section id="order-list" className="order-list">
+          {orders.map((o, i) => {
+            const offset = 8 //hrs
+            const createdAt = new Date(Date.parse(o.createdAt) + offset * 60 * 60 * 1000).toISOString().slice(0, 19).split('T').join(' ')
+            return (
+              <div key={i} className="order-item">
+                <div className="item">
+                  <span className="item-title">訂單編號</span>
+                  <div className="item-value-wrapper">
+                    <Link
+                      to={{
+                        pathname: `/orders/${o.id}`,
+                        state: { from: props.location }
+                      }}
+                      className="item-value"
+                    >{o.sn}</Link>
+                    <span>(點擊查看明細)</span>
+                  </div>
+                </div>
+
+                <div className="item">
+                  <span className="item-title">成立時間</span>
+                  <div className="item-value-wrapper">
+                    <span className="item-value">{createdAt}</span>
+                  </div>
+                </div>
+
+                <div className="item">
+                  <span className="item-title">付款方式</span>
+                  <div className="item-value-wrapper">
+                    <span className="item-value">{o.payment_method}</span>
+                  </div>
+                </div>
+
+                <div className="item">
+                  <span className="item-title">付款狀態</span>
+                  <div className="item-value-wrapper">
+                    <span className="item-value">{o.payment_status ? '已付款' : '尚未付款'}</span>
+                  </div>
+                </div>
+
+                <div className="item">
+                  <span className="item-title">運送方式</span>
+                  <div className="item-value-wrapper">
+                    <span className="item-value">{o.delivery_method}</span>
+                  </div>
+                </div>
+
+                <div className="item">
+                  <span className="item-title">運送狀態</span>
+                  <div className="item-value-wrapper">
+                    <span className="item-value">{o.delivery_status ? '已出貨' : '尚未出貨'}</span>
+                  </div>
+                </div>
+
+                <div className="item">
+                  <span className="item-title">訂單金額</span>
+                  <div className="item-value-wrapper">
+                    <span className="item-value">${o.total}</span>
+                  </div>
+                </div>
+
+                <div className="item">
+                  <span className="item-title">操作</span>
+                  <div className="item-value-wrapper">
+                    <span className="item-value">{!o.payment_status && (
+                      <button
+                        className="btn btn-link"
+                        onClick={() => { deleteOrderHandler(o.id) }}
+                      > 取消訂單</button>
+                    )}</span>
+                  </div>
+                </div>
+              </div>
+            )
+          })}
+        </section >
       )
     }
   }

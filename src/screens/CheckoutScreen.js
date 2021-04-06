@@ -6,6 +6,7 @@ import { createOrder } from '../actions/orderAction'
 import { ORDER_CREATE_RESET } from '../constants/orderConstants'
 import Message from '../components/Message'
 import Spinner from '../components/Spinner'
+import { CART_ITEMS_RESET } from '../constants/cartConstants'
 
 const CheckoutScreen = (props) => {
   console.log('CheckoutScreen render')
@@ -80,6 +81,8 @@ const CheckoutScreen = (props) => {
   useEffect(() => {
     if (order) {
       dispatch({ type: ORDER_CREATE_RESET })
+      dispatch({ type: CART_ITEMS_RESET })
+      localStorage.removeItem('cartItems')
       props.history.push(`/orders/${order.id}`)
     } else if (apiError && typeof apiError === 'object') {
       if (Object.keys(apiError).length) {

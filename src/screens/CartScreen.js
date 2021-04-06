@@ -41,7 +41,7 @@ const CartScreen = (props) => {
   const renderCartScreen = () => {
     if (!cartItems.length) {
       return (
-        <Message type="info">購物車內沒有商品 <Link to="/">去選購</Link></Message>
+        <Message type="info" dismiss={false}>購物車內沒有商品 <Link to="/">去選購</Link></Message>
       )
     }
     const subtotal = cartItems.reduce((a, c) => a + c.price * c.quantity, 0)
