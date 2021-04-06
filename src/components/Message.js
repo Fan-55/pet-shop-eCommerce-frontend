@@ -10,7 +10,7 @@ export default function Message({ children, type, dismiss }) {
     )
   } else {
     return (
-      <div class={`alert alert-${type}`} role="alert">
+      <div className={`alert alert-${type}`} role="alert">
         {children}
       </div >
     )
