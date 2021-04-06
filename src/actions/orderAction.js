@@ -1,4 +1,4 @@
-import axios from 'axios'
+import { apiHelper } from '../apis/helpers'
 import {
   ORDER_CREATE_REQUEST,
   ORDER_CREATE_SUCCESS,
@@ -19,7 +19,7 @@ export const createOrder = (formData) => {
     dispatch({ type: ORDER_CREATE_REQUEST })
     const { userLogin: { currentUser } } = getState()
     try {
-      const { data } = await axios.post('/api/orders', formData, {
+      const { data } = await apiHelper.post('/api/orders', formData, {
         headers: {
           authorization: `Bearer ${currentUser.token}`
         }
@@ -37,7 +37,7 @@ export const fetchOrderDetails = (orderId) => {
     dispatch({ type: ORDER_DETAILS_REQUEST })
     const { userLogin: { currentUser } } = getState()
     try {
-      const { data } = await axios.get(`/api/orders/${orderId}`, {
+      const { data } = await apiHelper.get(`/api/orders/${orderId}`, {
         headers: {
           authorization: `Bearer ${currentUser.token}`
         }
@@ -55,7 +55,7 @@ export const fetchOrders = () => {
     dispatch({ type: ORDER_FETCH_REQUEST })
     const { userLogin: { currentUser } } = getState()
     try {
-      const { data } = await axios.get('/api/orders', {
+      const { data } = await apiHelper.get('/api/orders', {
         headers: {
           authorization: `Bearer ${currentUser.token}`
         }
@@ -73,7 +73,7 @@ export const deleteOrder = (orderId) => {
     dispatch({ type: ORDER_DELETE_REQUEST })
     const { userLogin: { currentUser } } = getState()
     try {
-      await axios.delete(`/api/orders/${orderId}`, {
+      await apiHelper.delete(`/api/orders/${orderId}`, {
         headers: {
           authorization: `Bearer ${currentUser.token}`
         }

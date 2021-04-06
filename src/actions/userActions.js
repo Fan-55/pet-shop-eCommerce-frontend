@@ -1,4 +1,4 @@
-import axios from 'axios'
+import { apiHelper } from '../apis/helpers'
 import {
   USER_LOGIN_REQUEST,
   USER_LOGIN_SUCCESS,
@@ -14,7 +14,7 @@ export const login = (email, password) => {
   return async (dispatch, getState) => {
     dispatch({ type: USER_LOGIN_REQUEST })
     try {
-      const { data } = await axios.post('/api/login', { email, password })
+      const { data } = await apiHelper.post('/api/login', { email, password })
       dispatch({ type: USER_LOGIN_SUCCESS, payload: data })
       localStorage.setItem('currentUser', JSON.stringify(data))
     } catch (err) {
@@ -35,7 +35,7 @@ export const register = (formData) => {
   return async (dispatch, getState) => {
     dispatch({ type: USER_REGISTER_REQUEST })
     try {
-      const { data } = await axios.post('/api/register', formData)
+      const { data } = await apiHelper.post('/api/register', formData)
       dispatch({ type: USER_REGISTER_SUCCESS })
       dispatch({ type: USER_LOGIN_SUCCESS, payload: data })
       localStorage.setItem('currentUser', JSON.stringify(data))
