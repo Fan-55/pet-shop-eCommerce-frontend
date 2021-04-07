@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/pet-shop-eCommerce-frontend/static/css/main.83f79b0c.chunk.css",
+    "main.js": "/pet-shop-eCommerce-frontend/static/js/main.0e79af5f.chunk.js",
+    "main.js.map": "/pet-shop-eCommerce-frontend/static/js/main.0e79af5f.chunk.js.map",
+    "runtime-main.js": "/pet-shop-eCommerce-frontend/static/js/runtime-main.df3ff1f8.js",
+    "runtime-main.js.map": "/pet-shop-eCommerce-frontend/static/js/runtime-main.df3ff1f8.js.map",
+    "static/css/2.631cbb15.chunk.css": "/pet-shop-eCommerce-frontend/static/css/2.631cbb15.chunk.css",
+    "static/js/2.e2332f81.chunk.js": "/pet-shop-eCommerce-frontend/static/js/2.e2332f81.chunk.js",
+    "static/js/2.e2332f81.chunk.js.map": "/pet-shop-eCommerce-frontend/static/js/2.e2332f81.chunk.js.map",
+    "index.html": "/pet-shop-eCommerce-frontend/index.html",
+    "static/css/2.631cbb15.chunk.css.map": "/pet-shop-eCommerce-frontend/static/css/2.631cbb15.chunk.css.map",
+    "static/css/main.83f79b0c.chunk.css.map": "/pet-shop-eCommerce-frontend/static/css/main.83f79b0c.chunk.css.map",
+    "static/js/2.e2332f81.chunk.js.LICENSE.txt": "/pet-shop-eCommerce-frontend/static/js/2.e2332f81.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.df3ff1f8.js",
+    "static/css/2.631cbb15.chunk.css",
+    "static/js/2.e2332f81.chunk.js",
+    "static/css/main.83f79b0c.chunk.css",
+    "static/js/main.0e79af5f.chunk.js"
+  ]
+}
