@@ -1,7 +1,12 @@
 ## 毛小孩商城
 ---
-這是一個販賣寵物商品的電商網站
-![](/screenshots/v1.png)
+毛小孩商城是一個販賣寵物商品的SPA電商平台，使用者可以瀏覽商品、加入購物車、註冊會員、查看及取消訂單、使用信用卡付款，頁面採RWD設計，可以在手機及電腦等不同裝置瀏覽。
+
+👉 電腦版畫面
+![](/screenshots/v2-pc.gif)
+
+👉 手機版畫面
+![](/screenshots/v2-m.gif)
 
 #### Demo Website
 ---
@@ -17,7 +22,7 @@
 
 2. 信用卡號: 4000-2211-1111-1111 (有效月年和背面末三碼可任意填寫)
 
-#### 後端Demo
+#### 後端API
 ---
 👉 Github: https://github.com/Fan-55/pet-shop-eCommerce-backend
 
@@ -29,8 +34,8 @@
 - 使用localstorage實作購物車功能
 - RWD
 - jwt authentication
-- 串接後端API
-- 後端API使用Node.js + Exresss.js + MySQL實作
+- 後端RESTful API
+- 後端API使用Node.js + Express + MySQL實作
 
 #### Tools
 ---
@@ -38,12 +43,14 @@
 - HTML
 - CSS
 - React
-- Redux
-- Bootstrap
+- Redux: 統一管理前端資料狀態
+- Bootstrap: 優化前端UI
+- SweetAlert2: 彈出提示、確認框優化使用者體驗
+- Axios
 
 後端:
 - Node.js
-- Express.js
+- Express
 - MySQL
 - Sequelize
 
@@ -52,12 +59,12 @@
 
 #### 待開發功能
 ---
-- 後台  
+- 管理者(admin)後台  
 1. 商品清單(上傳、編輯、刪除)
-4. 使用者清單(編輯、刪除)
-5. 訂單清單(編輯、刪除)
+2. 使用者清單(編輯、刪除)
+3. 訂單清單(編輯、刪除)
 
-- 前台
+- 使用者(user)前台
 1. 使用者編輯個人資料
 2. 儲存使用者常用收件資料
 3. 搜尋商品
