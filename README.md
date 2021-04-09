@@ -3,10 +3,12 @@
 毛小孩商城是一個販賣寵物商品的SPA電商平台，使用者可以瀏覽商品、加入購物車、註冊會員、查看及取消訂單、使用信用卡付款，頁面採RWD設計，可以在手機及電腦等不同裝置瀏覽。
 
 👉 電腦版畫面
+
 ![](/screenshots/v2-pc.gif)
 
 👉 手機版畫面
-![](/screenshots/v2-m.gif)
+
+![](/screenshots/v3-m.gif)
 
 #### Demo Website
 ---
